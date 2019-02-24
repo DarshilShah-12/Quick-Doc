@@ -3,9 +3,9 @@ import datetime
 
 # Create your models here.
 class Search(models.Model):
-    address = models.CharField(max_length=200)
-    search_for = models.CharField(max_length=200)
-    submit_datetime = datetime.datetime.now()
-
+    userAddress = models.CharField(max_length=200)
+    userConcern = models.CharField(max_length=200)
+    timeStamp = datetime.datetime.now()
+    userConcernsList = ["Emergency", "Walk-In"]
     def __str__(self):
         return self.address
