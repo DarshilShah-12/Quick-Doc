@@ -16,4 +16,19 @@ class mainView(TemplateView):
 
     def get(self, request):
         form = mainForm()
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': mainForm})
+
+class dashboardView(TemplateView):
+	template_name = 'main/dashboard.html'
+
+	def get(self, request):
+		return render(request, self.template_name, {})
+
+	def post(self, request):
+		form = mainForm(request.POST)
+		if form.is_valid():
+			userAddress = form.cleaned_data['userAddress']
+			userConcern = form.cleaned_data['userConcern']
+
+		args = {'form': form, 'userAddress':userAddress, 'userConcern':userConcern}
+		return render(request, self.template_name, args)
