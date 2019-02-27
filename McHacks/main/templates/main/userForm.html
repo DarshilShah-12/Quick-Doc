@@ -97,5 +97,24 @@
 		}
         </style>
 	</body>
-</html>
 
+<!-- 	API GCP Maps API Get request using Ajax -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">>
+		$(document).ready(function(){
+			const Url='https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=Waterloo,ON&destinations=San+Francisco,Ca&key=AIzaSyCauISu_jwPz5y4UwoVF7PcpYjuRvdCAFc';
+			$('.btn').click(function(){
+				$.ajax({
+					url: Url,
+					type: "GET",
+					success: function(result){
+					console.log(result)
+				},
+				error:function(error){
+					console.log('Error ${error}')
+				}
+			})
+			})
+		})
+		
+	</script>
+</html>
