@@ -8,4 +8,4 @@ class mainForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['userConcern'].queryset = Search.userConcernsList
+        # self.fields['userConcern'].queryset = Search.userConcernsList

@@ -12,20 +12,20 @@
 		<div class="vertical-center">
 		<div class="container">
 		    <h1>Home</h1>
-		    <form action="dashboard.html" method="post">
+		    <!-- <form action="/add_search_form_submission/" method="get">
 		    		{% csrf_token %}
 		    		<label for="exampleFormControlInput1">Address</label>
-    				<input type="text" class="form-control" id="autocomplete" placeholder="Ex. 3115 Aaron Smith Drive">
+    				<input type="text" class="form-control" id="autocomplete" placeholder="Ex. 3115 Aaron Smith Drive" name="userAddress">
     				</br>
     				<label for="exampleFormControlInput1">Concern</label>
-    				<select class="form-control form-control-md">
+    				<select class="form-control form-control-md" name="userConcern">
     				  <option>--Please Select--</option>
 					  <option>Emergency Room</option>
 					  <option>Walk-In Clinic</option>
 					</select>
 					</br>
 			        <button type="submit" class="btn btn-primary">Submit</button>
-		    </form>
+		    </form> -->
 		</div>
 	</div>
 		{% endblock %}
@@ -58,6 +58,7 @@
 	        for (var component in componentForm) {
 	          document.getElementById(component).value = '';
 	          document.getElementById(component).disabled = false;
+	          break;
 	        }
 
 	        for (var i = 0; i < place.address_components.length; i++) {
@@ -66,6 +67,7 @@
 	            var val = place.address_components[i][componentForm[addressType]];
 	            document.getElementById(addressType).value = val;
 	          }
+	          break;
 	        }
 	      }
 

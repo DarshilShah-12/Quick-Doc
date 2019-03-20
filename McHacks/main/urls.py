@@ -16,11 +16,14 @@ Including another URLconf
 from django.urls import path
 from . import views
 from django.views.generic import TemplateView
+from .models import Search
+from .models import add_search_form_submission
 
 app_name = "main"
 
 urlpatterns = [
     # path('', views.userForm, name="userForm"),
     path('', views.mainView.as_view(template_name='main/userForm.html')),
-    path('dashboard.html', views.dashboardView.as_view(template_name='main/dashboard.html')),
+    path('dashboard.html', views.dashboardView.as_view(template_name='main/dashboard.html'))
+    # path('add_search_form_submission/$', )
 ]
