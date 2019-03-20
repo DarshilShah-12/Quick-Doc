@@ -12,6 +12,11 @@
 		<div class="vertical-center">
 		<div class="container">
 		    <h1>Home</h1>
+		    	<form method="post">
+		    		{% csrf_token %}
+		    		<!-- <button type="submit">Submit</button> -->
+		    		{{ form.as_p }}
+		    		<button type="submit" class="btn btn-primary">Submit</button>
 		    <!-- <form action="/add_search_form_submission/" method="get">
 		    		{% csrf_token %}
 		    		<label for="exampleFormControlInput1">Address</label>
@@ -26,6 +31,9 @@
 					</br>
 			        <button type="submit" class="btn btn-primary">Submit</button>
 		    </form> -->
+
+		   	{{userAddress}}
+		   	{{userConcern}}
 		</div>
 	</div>
 		{% endblock %}

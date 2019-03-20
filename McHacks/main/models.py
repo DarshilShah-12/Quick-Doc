@@ -7,8 +7,11 @@ class Search(models.Model):
     userConcern = models.CharField(max_length=200)
     timeStamp = datetime.datetime.now()
     
+    def __init__(self):
+    	super(Search, self).__init__()
+
     def __str__(self):
-        return self.address
+        return self.userAddress
 
 def add_search_form_submission(Search):
 	print("Hi Form Submitted.")
