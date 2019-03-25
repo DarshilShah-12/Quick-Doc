@@ -20,5 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
     path('dashboard.html', include('main.urls')),
-    # path('add_search_form_submission', include(main.urls))
+    path('particles.json', include('main.urls')),
+    path('redplus.png', include('main.urls')),
 ]

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Search
 from django.views.generic import TemplateView
+from django.views.generic import CreateView
 from main.forms import mainForm
 
 # Create your views here.
@@ -23,15 +24,12 @@ class mainView(TemplateView):
     	if(form.is_valid()):
     		form.save()
     		search = Search()
-    		search.save()
     		search.userAddress = form.cleaned_data['userAddress']
     		search.userConcern = form.cleaned_data['userConcern']
-    		search.save()
-
-
-
-    	args = {'form': form, 'userAddress':search.userAddress, 'userConcern':search.userConcern, 'search':search}
-    	return render(request, 'main/dashboard.html', args)
+    		args = {'form': form, 'search':search, 'userAddress':search.userAddress, 'userConcern':search.userConcern}
+    		return render(request, 'main/dashboard.html', args)
+    	print("form not valid :(")
+    	return render(request, 'main/dashboard.html')
 
 class dashboardView(TemplateView):
 	template_name = 'main/dashboard.html'
@@ -52,10 +50,16 @@ class dashboardView(TemplateView):
 # 	search = Search(userAddress=request.GET['userAddress'], userConcern=request.GET['userConcern'])
 # 	return HttpResponse(search)
 
-def getFormData(request):
-	form = mainForm(request.POST)
-	return render(request, 'main/dashboard.html', {'form':form})
+# def getFormData(request):
+# 	form = mainForm(request.POST)
+# 	return render(request, 'main/dashboard.html', {'form':form})
 
-def post_new(request):
-	form = mainForm()
-	return render(request, 'main/userForm.html', {'form': form})
+# def post_new(request):
+# 	form = mainForm()
+# 	return render(request, 'main/userForm.html', {'form': form})
+
+class CreateSearchView(CreateView):
+	model = Search
+	form_class = mainForm
+	template_name = 'main/userForm.html'
+	success_url = 'main/dashboard.html'
