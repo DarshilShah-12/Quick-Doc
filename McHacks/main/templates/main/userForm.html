@@ -96,25 +96,54 @@
 		  align-items: center;
 		}
         </style>
+        <button id="test_MAPS_API" type="button">Get API response</button>
 	</body>
 
+
 <!-- 	API GCP Maps API Get request using Ajax -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">>
-		$(document).ready(function(){
-			const Url='https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=Waterloo,ON&destinations=San+Francisco,Ca&key=AIzaSyCauISu_jwPz5y4UwoVF7PcpYjuRvdCAFc';
-			$('.btn').click(function(){
-				$.ajax({
-					url: Url,
-					type: "GET",
-					success: function(result){
-					console.log(result)
-				},
-				error:function(error){
-					console.log('Error ${error}')
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+		(function() {
+			var httpRequest;
+			document.getElementById("test_MAPS_API").addEventListener('click', makeRequest);
+
+			function makeRequest() {
+				httpRequest = new XMLHttpRequest();
+
+				if (!httpRequest) {
+					alert('Giving up: Cannot create an XMLHTTP instance');
+					return false;
 				}
-			})
-			})
-		})
+				httpRequest.onreadystatechange = alertContents;
+				httpRequest.open('GET', 'https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=Waterloo,ON&destinations=San+Francisco,Ca&key=AIzaSyCauISu_jwPz5y4UwoVF7PcpYjuRvdCAFc');
+				httpRequest.send();
+			}
+
+			function alertContents() {
+				if (httpRequest.readyState === XMLHttpRequest.DONE) {
+					if (httpRequest.status === 200) {
+						alert(httpRequest.responseText);
+						alert('Entered if statement')
+					} else {
+						alert('There was a problem with the request.')
+					}
+				}
+			}
+		}) ();
+		// $(document).ready(function(){
+		// 	const Url='https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=Waterloo,ON&destinations=San+Francisco,Ca&key=AIzaSyCauISu_jwPz5y4UwoVF7PcpYjuRvdCAFc';
+		// 	$('.btn').click(function(){
+		// 		$.ajax({
+		// 			url: Url,
+		// 			type: "GET",
+		// 			success: function(result){
+		// 			console.log(result)
+		// 		},
+		// 		error:function(error){
+		// 			console.log('Error ${error}')
+		// 		}
+		// 	})
+		// 	})
+		// })
 		
 	</script>
 </html>
