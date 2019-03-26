@@ -16,6 +16,7 @@ Including another URLconf
 from django.urls import path
 from . import views
 from django.views.generic import TemplateView
+from .models import Search
 
 app_name = "main"
 
@@ -23,4 +24,6 @@ urlpatterns = [
     # path('', views.userForm, name="userForm"),
     path('', views.mainView.as_view(template_name='main/userForm.html')),
     path('dashboard.html', views.dashboardView.as_view(template_name='main/dashboard.html')),
+    path('particles.json', views.dashboardView.as_view(template_name='main/particles.json')),
+    path('redplus.png', views.dashboardView.as_view(template_name='main/redplus.png')),
 ]

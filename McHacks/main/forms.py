@@ -1,11 +1,32 @@
 from django import forms
 from .models import Search
+from .models import USER_CONCERNS
 
 class mainForm(forms.ModelForm):
-    class Meta:
-        model = Search
-        fields = ['userAddress', 'userConcern']
+	userAddress = forms.CharField(widget=forms.TextInput(
+		attrs={
+			'id': 'autocomplete',
+			'class': 'form-control',
+			'placeholder': 'Enter your current address',
+			'style': 'font-size:24px'
+		}
+	))
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['userConcern'].queryset = Search.userConcernsList
+	userConcern = forms.ChoiceField(choices=USER_CONCERNS, widget=forms.Select(
+		attrs={
+			'class': 'form-control',
+			'style': 'font-size:24px',
+		}
+	))
+
+	class Meta:
+	    model = Search
+	    fields = ('userAddress', 'userConcern')
+
+
+	def __init__(self, *args, **kwargs):
+	    super().__init__(*args, **kwargs)
+	    # self.fields['userConcern'].queryset = Search.userConcernsList
+	    self.fields['userAddress'].label = "Address"
+	    # self.fields['userAddress'].label.font-size = 30
+	    self.fields['userConcern'].label = "Concern"

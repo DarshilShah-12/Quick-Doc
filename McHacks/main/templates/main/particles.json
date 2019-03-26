@@ -1,0 +1,13 @@
+{
+  "particles": {
+    "number": {
+      "value": 25
+    },
+    "shape": {
+      "type":"image",
+      "image": {
+        "src":"https://png2.kisspng.com/sh/e89487dc5ceb61e8ab823ecf08d86acd/L0KzQYm3V8I5N5d6e5H0aYP2gLBuTfFubaNue9N3LYLodH7qkv90e15ohNt5LXH1hH70hfRqa5JxReV9b4LoPYbpVfNja2k3eaVuYkW2Poq8VMQ5OGg9Sac8MkizRIO5VsY4OWUziNDw/kisspng-american-red-cross-clip-art-medical-store-5b5cbc82a3eb53.9544807815328042266714.png"
+      }
+    }
+  }
+}
