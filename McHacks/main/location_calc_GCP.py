@@ -1,29 +1,25 @@
-"""McHacks URL Configuration
+import requests
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/2.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.urls import path
-from . import views
-from django.views.generic import TemplateView
-from .models import Search
+API_KEY = AIzaSyCauISu_jwPz5y4UwoVF7PcpYjuRvdCAFc
 
-app_name = "main"
+class HealthCareLocations()
+""" Calculate the closest healthcare locations depending on the need specified in the user form"""
 
-urlpatterns = [
-    # path('', views.userForm, name="userForm"),
-    path('', views.mainView.as_view(template_name='main/userForm.html')),
-    path('dashboard.html', views.dashboardView.as_view(template_name='main/dashboard.html')),
-    path('particles.json', views.dashboardView.as_view(template_name='main/particles.json')),
-    path('redplus.png', views.dashboardView.as_view(template_name='main/redplus.png')),
-]
+    def __init__(self, userAddress, userConcern)
+        self.userAddress = userAddress
+        self.userConcern = userConcern
+        self.apiKey = API_KEY
+
+    def getRequest(self, url, headers)
+    """ General API get request function to be used when making the GCP API calls """
+        return requests.request("GET", url, data=payload, headers=headers)
+
+    def calcLocationCoordiantes(self)
+
+        addr_tokens = split(self.userAddress, ",")
+        
+        parametersDict = {"base_https": "https://maps.googleapis.com/maps/api/geocode/", "mode": "json", 
+                            "address": address}
+
+
+
