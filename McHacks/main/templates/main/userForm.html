@@ -29,7 +29,7 @@
 			    		<div class="row">
 			    			<div class="col-md">
 				    		<button id="return" type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Close</button>
-				    		<button id="test" type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Test</button>
+				    		<button id="test" type="button" class="btn btn-secondary btn-block" onclick="geocodeCalc()" data-dismiss="modal">Test4</button>
 				    		</div>
 				    		<div class="col-md">
 				    		<button type="submit" class="btn btn-primary btn-block">Submit</button>
@@ -86,7 +86,7 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 		<script>
 
-	      var placeSearch, autocomplete, geocoder;
+	      var placeSearch, autocomplete;
 	      var componentForm = {
 	        street_number: 'short_name',
 	        route: 'long_name',
@@ -123,17 +123,19 @@
 	        }
 	      }
 
-	      function geocode() {
+	      function geocodeCalc() {
 	      	var geocoder = new google.maps.Geocoder();
 	      	var address = document.getElementById('autocomplete').value;
 
 	      	geocoder.geocode( { 'address': address}, function(results, status) {
 	      		if (status === 'OK') {
-            		document.write(results[0].geometry.location);
+	      			var location = results[0].geometry.location; //hold the lat & long of user address
+            		// var container = document.getElementById("particles-js");
+              //       container.innerHTML = '<span style="color:red;">' + results[0].geometry.location + '</span>';
           		} else {
             		alert('Geocode was not successful for the following reason: ' + status);
           		}
-          	}
+          	});
 
 
 	      }
@@ -154,8 +156,9 @@
 	        }
 	      }
 		</script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDL_7pDwdveLLjx5dxG31y5KNdOqpLEpkk&libraries=places&callback=initAutocomplete"
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCauISu_jwPz5y4UwoVF7PcpYjuRvdCAFc&libraries=places&callback=initAutocomplete"
         async defer></script>
+
         <style>
         .vertical-center {
 		  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
