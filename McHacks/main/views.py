@@ -21,6 +21,7 @@ class mainView(TemplateView):
 
     def post(self, request):
     	form = mainForm(request.POST)
+    	print(form.errors)
     	if(form.is_valid()):
     		form.save()
     		search = Search()
@@ -36,30 +37,3 @@ class dashboardView(TemplateView):
 
 	def get(self, request):
 		return render(request, self.template_name, {})
-
-	# def post(self, request):
-	# 	form = mainForm(request.POST)
-	# 	if form.is_valid():
-	# 		Search.userAddress = form.cleaned_data['userAddress']
-	# 		Search.userConcern = form.cleaned_data['userConcern']
-
-	# 	args = {'form': form, 'userAddress':userAddress, 'userConcern':userConcern}
-	# 	return render(request, self.template_name, args)
-
-# def search(request):
-# 	search = Search(userAddress=request.GET['userAddress'], userConcern=request.GET['userConcern'])
-# 	return HttpResponse(search)
-
-# def getFormData(request):
-# 	form = mainForm(request.POST)
-# 	return render(request, 'main/dashboard.html', {'form':form})
-
-# def post_new(request):
-# 	form = mainForm()
-# 	return render(request, 'main/userForm.html', {'form': form})
-
-class CreateSearchView(CreateView):
-	model = Search
-	form_class = mainForm
-	template_name = 'main/userForm.html'
-	success_url = 'main/dashboard.html'

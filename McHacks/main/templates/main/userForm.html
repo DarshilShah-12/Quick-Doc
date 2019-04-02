@@ -29,7 +29,7 @@
 			    		<div class="row">
 			    			<div class="col-md">
 				    		<button id="return" type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Close</button>
-				    		<button id="test" type="button" class="btn btn-secondary btn-block" onclick="geocodeCalc()" data-dismiss="modal">Test4</button>
+				    		<button id="button" type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Test4</button>
 				    		</div>
 				    		<div class="col-md">
 				    		<button type="submit" class="btn btn-primary btn-block">Submit</button>
@@ -39,6 +39,34 @@
 					</div>
 					</form>
 					</div>
+			<!-- This table below should be replaced in the future, just so we dont get js errors thrown in console causing trouble -->
+			<table id="address">
+			  <tr>
+			    <td class="label">Street address</td>
+			    <td class="slimField"><input class="field" id="street_number"
+			                                 disabled="true"></input></td>
+			    <td class="wideField" colspan="2"><input class="field" id="route"
+			                                             disabled="true"></input></td>
+			  </tr>
+			  <tr>
+			    <td class="label">City</td>
+			    <td class="wideField" colspan="3"><input class="field" id="locality"
+			                                             disabled="true"></input></td>
+			  </tr>
+			  <tr>
+			    <td class="label">State</td>
+			    <td class="slimField"><input class="field"
+			                                 id="administrative_area_level_1" disabled="true"></input></td>
+			    <td class="label">Zip code</td>
+			    <td class="wideField"><input class="field" id="postal_code"
+			                                 disabled="true"></input></td>
+			  </tr>
+			  <tr>
+			    <td class="label">Country</td>
+			    <td class="wideField" colspan="3"><input class="field"
+			                                             id="country" disabled="true"></input></td>
+			  </tr>
+			</table>
 			</div>
 		{% endblock %}
 		<style>
@@ -87,6 +115,7 @@
 		<script>
 
 	      var placeSearch, autocomplete;
+	      var location;
 	      var componentForm = {
 	        street_number: 'short_name',
 	        route: 'long_name',
@@ -121,23 +150,29 @@
 	          }
 	          break;
 	        }
+	        geocodeCalc();
 	      }
 
 	      function geocodeCalc() {
 	      	var geocoder = new google.maps.Geocoder();
 	      	var address = document.getElementById('autocomplete').value;
-
 	      	geocoder.geocode( { 'address': address}, function(results, status) {
 	      		if (status === 'OK') {
-	      			var location = results[0].geometry.location; //hold the lat & long of user address
+	      			location = results[0].geometry.location; //hold the lat & long of user address
+					
+	      			var longitude = document.getElementById("id_longitude");
+	      			$("#id_longitude").text(location[0]);
+	      			var latitude = document.getElementById("id_latitude");
+	      			// $(latitude).text(location[1])
+	      			return;
             		// var container = document.getElementById("particles-js");
               //       container.innerHTML = '<span style="color:red;">' + results[0].geometry.location + '</span>';
           		} else {
             		alert('Geocode was not successful for the following reason: ' + status);
           		}
+          		break;
           	});
-
-
+          	break;
 	      }
 
 	       function geolocate() {
@@ -155,6 +190,27 @@
 	          });
 	        }
 	      }
+
+	      // function grabLocation() {
+	      // 	$.ajax({
+	      // 		  type:'get',
+			    //   url:'/grabLocation',
+			    //   data: {
+			    //   	locationCoords: location,
+			    //   },
+			    //   cache:false,
+			    //   async:'asynchronous',
+			    //   dataType:'json',
+			    //   success: function(data) {
+			    //   	object = HealthCareLocations(data)
+			    //   	object.calcLocationCoordiantes()
+			    //   },
+			    //   error: function(request, status, error) {
+			    //     console.log("Error: " + error)
+			    //   }
+	      // 	});
+	      // }
+
 		</script>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCauISu_jwPz5y4UwoVF7PcpYjuRvdCAFc&libraries=places&callback=initAutocomplete"
         async defer></script>
