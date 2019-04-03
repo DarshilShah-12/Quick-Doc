@@ -159,6 +159,7 @@
 	      		if (status === 'OK') {
 	      			var location = results[0].geometry.location; //hold the lat & long of user address
 	      			location = location.toString();
+<<<<<<< HEAD
 					location = location.replace(/[() ]/g, '')
 					var coords = location.split(',');
 	      			document.getElementById("id_longitude").value = coords[0];
@@ -172,6 +173,16 @@
           		
           	});
           	
+=======
+	      			location = location.replace(/[() ]/g,'');
+					location = location.split(',');
+					document.getElementById("id_latitude").value = location[0];
+	      			document.getElementById("id_longitude").value = location[1];
+          		} else {
+            		alert('Geocode was not successful for the following reason: ' + status);
+          		}
+          	});
+>>>>>>> 75e97bc04b8570838a553264be56e9ca972974cd
 	      }
 
 	       function geolocate() {

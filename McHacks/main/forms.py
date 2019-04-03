@@ -21,15 +21,15 @@ class mainForm(forms.ModelForm):
 		}
 	))
 
-	longitude = forms.DecimalField(widget=forms.TextInput(
+	longitude = forms.DecimalField(widget=forms.NumberInput(
 		attrs={
-			'readonly': True,
+			'type': 'hidden'
 		}
 	))
 
-	latitude = forms.DecimalField(widget=forms.TextInput(
+	latitude = forms.DecimalField(widget=forms.NumberInput(
 		attrs={
-			'readonly': True,
+			'type': 'hidden'
 		}
 	))
 
@@ -43,6 +43,10 @@ class mainForm(forms.ModelForm):
 	    # self.fields['userConcern'].queryset = Search.userConcernsList
 	    self.fields['userAddress'].label = "Address"
 	    # self.fields['userAddress'].label.font-size = 30
+<<<<<<< HEAD
 	    self.fields['userConcern'].label = "Concern"
 	    self.fields['longitude'].required = False
 	    self.fields['latitude'].required = False
+=======
+	    self.fields['userConcern'].label = "Concern"
+>>>>>>> 75e97bc04b8570838a553264be56e9ca972974cd

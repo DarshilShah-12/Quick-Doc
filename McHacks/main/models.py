@@ -24,8 +24,13 @@ USER_CONCERNS = (
 class Search(models.Model):
     userAddress = models.CharField(max_length=200)
     userConcern = models.CharField(max_length=9, choices=USER_CONCERNS, default="emergency")
+<<<<<<< HEAD
     longitude = models.DecimalField(max_digits=18, decimal_places=8, blank=True, null=True)
     latitude = models.DecimalField(max_digits=15, decimal_places=8, blank=True, null=True)
+=======
+    longitude = models.DecimalField(max_digits=18, decimal_places=15)
+    latitude = models.DecimalField(max_digits=18, decimal_places=15)
+>>>>>>> 75e97bc04b8570838a553264be56e9ca972974cd
     timeStamp = datetime.datetime.now()
     
     def __init__(self):
