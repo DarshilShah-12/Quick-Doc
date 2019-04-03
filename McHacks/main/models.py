@@ -24,33 +24,12 @@ USER_CONCERNS = (
 class Search(models.Model):
     userAddress = models.CharField(max_length=200)
     userConcern = models.CharField(max_length=9, choices=USER_CONCERNS, default="emergency")
-<<<<<<< HEAD
-    # componentForm = models.ForeignKey(AddressComponents, on_delete = models.PROTECT)
-=======
-    longitude = models.DecimalField(max_digits=10, decimal_places=8, blank=True, null=True)
-    latitude = models.DecimalField(max_digits=10, decimal_places=8, blank=True, null=True)
->>>>>>> 9be192228f7c40e84d71e03873c3946956fa8e7a
+    longitude = models.DecimalField(max_digits=18, decimal_places=8, blank=True, null=True)
+    latitude = models.DecimalField(max_digits=15, decimal_places=8, blank=True, null=True)
     timeStamp = datetime.datetime.now()
     
     def __init__(self):
     	super(Search, self).__init__()
 
     def __str__(self):
-<<<<<<< HEAD
         return self.userAddress
-
-
-
-
-
-# def add_search_form_submission(Search):
-# 	print("Hi Form Submitted.")
-# 	# userAddress = request.POST['userAddress']
-# 	# userConcern = request.POST['userConcern']
-# 	timeStamp = datetime.datetime.now()
-# 	search = Search(Search.userAddress, Search.userConcern)
-
-# 	return(search, "main/dashboard.html")
-=======
-        return self.userAddress
->>>>>>> 9be192228f7c40e84d71e03873c3946956fa8e7a

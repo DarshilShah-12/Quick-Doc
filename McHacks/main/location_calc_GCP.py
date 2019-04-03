@@ -10,9 +10,7 @@
 #         self.locationCoords = locationCoords
 #         self.apiKey = API_KEY
 
-<<<<<<< HEAD
 class HealthCareLocations():
-""" Calculate the closest healthcare locations depending on the need specified in the user form"""
 
     def __init__(self, userAddress, userConcern):
         self.userAddress = userAddress
@@ -20,37 +18,25 @@ class HealthCareLocations():
         self.apiKey = API_KEY
 
     def getRequest(self, url, headers):
-    """ General API get request function to be used when making the GCP API calls """
         return requests.request("GET", url, data=payload, headers=headers)
 
-    def emergencyPlaceSearch(self):
+    # def emergencyPlaceSearch(self):
 
 
-        coords = self.locationCoords.replace("(", "")
-        coords = coords.replace(")", "")
+    #     coords = self.locationCoords.replace("(", "")
+    #     coords = coords.replace(")", "")
 
-        parDic = {"base_https": "https://maps.googleapis.com/maps/api/place/findplacefromtext/json", 
-                            "point": coords, "radius": "2000", "input" = "hospitals", "fields" = 
-                            ["formatted_address,name,opening_hours,rating"]}
+    #     parDic = {"base_https": "https://maps.googleapis.com/maps/api/place/findplacefromtext/json", 
+    #                         "point": coords, "radius": "2000", "input" = "hospitals", "fields" = 
+    #                         ["formatted_address,name,opening_hours,rating"]}
 
-        # format the url 
-        url = "{0}?input={1}&inputtype=textquery&fields={2}&locationbias=circle:{3}@{4}&key={5}".format(
-        parDic["base_https"],parDic["input"], parDic["fields"],parDic["radius"], parDic["point"], API_KEY)
+    #     # format the url 
+    #     url = "{0}?input={1}&inputtype=textquery&fields={2}&locationbias=circle:{3}@{4}&key={5}".format(
+    #     parDic["base_https"],parDic["input"], parDic["fields"],parDic["radius"], parDic["point"], API_KEY)
 
-        jsonOutput = getRequest(url)
+    #     jsonOutput = getRequest(url)
 
-=======
-#     """ General API get request function to be used when making the GCP API calls"""
-#     def getRequest(self, url, headers):
-#         return requests.request("GET", url, data=payload, headers=headers)
 
-#     def calcLocationCoordiantes(self):
-
-#         addr_tokens = split(self.userAddress, ",")
-        
-#         parametersDict = {"base_https": "https://maps.googleapis.com/maps/api/geocode/", "mode": "json", 
-#                             "address": address}
->>>>>>> 9be192228f7c40e84d71e03873c3946956fa8e7a
 
 
 
