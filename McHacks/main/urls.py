@@ -17,6 +17,7 @@ from django.urls import path
 from . import views
 from django.views.generic import TemplateView
 from .models import Search
+from .location_calc_GCP import __init__
 
 app_name = "main"
 

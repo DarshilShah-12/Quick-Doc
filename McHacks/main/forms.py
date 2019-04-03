@@ -21,9 +21,21 @@ class mainForm(forms.ModelForm):
 		}
 	))
 
+	longitude = forms.DecimalField(widget=forms.TextInput(
+		attrs={
+			'readonly': True,
+		}
+	))
+
+	latitude = forms.DecimalField(widget=forms.TextInput(
+		attrs={
+			'readonly': True,
+		}
+	))
+
 	class Meta:
 	    model = Search
-	    fields = ('userAddress', 'userConcern')
+	    fields = ('userAddress', 'userConcern','longitude','latitude')
 
 
 	def __init__(self, *args, **kwargs):
@@ -32,3 +44,5 @@ class mainForm(forms.ModelForm):
 	    self.fields['userAddress'].label = "Address"
 	    # self.fields['userAddress'].label.font-size = 30
 	    self.fields['userConcern'].label = "Concern"
+	    self.fields['longitude'].required = False
+	    self.fields['latitude'].required = False
