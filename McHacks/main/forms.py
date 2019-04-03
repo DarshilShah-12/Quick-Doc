@@ -12,6 +12,8 @@ class mainForm(forms.ModelForm):
 		}
 	))
 
+	# componentForm = forms.CharField(widget=forms.TextInput()
+
 	userConcern = forms.ChoiceField(choices=USER_CONCERNS, widget=forms.Select(
 		attrs={
 			'class': 'form-control',

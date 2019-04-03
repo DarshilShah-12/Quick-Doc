@@ -4,6 +4,7 @@ from .models import Search
 from django.views.generic import TemplateView
 from django.views.generic import CreateView
 from main.forms import mainForm
+import sys
 
 # Create your views here.
 
@@ -29,7 +30,7 @@ class mainView(TemplateView):
     		args = {'form': form, 'search':search, 'userAddress':search.userAddress, 'userConcern':search.userConcern}
     		return render(request, 'main/dashboard.html', args)
     	print("form not valid :(")
-    	return render(request, 'main/dashboard.html')
+    	return render(request, 'main/userForm.html')
 
 class dashboardView(TemplateView):
 	template_name = 'main/dashboard.html'
