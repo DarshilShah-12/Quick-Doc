@@ -115,7 +115,6 @@
 		<script>
 
 	      var placeSearch, autocomplete;
-	      var location;
 	      var componentForm = {
 	        street_number: 'short_name',
 	        route: 'long_name',
@@ -158,21 +157,16 @@
 	      	var address = document.getElementById('autocomplete').value;
 	      	geocoder.geocode( { 'address': address}, function(results, status) {
 	      		if (status === 'OK') {
-	      			location = results[0].geometry.location; //hold the lat & long of user address
-					
-	      			var longitude = document.getElementById("id_longitude");
-	      			$("#id_longitude").text(location[0]);
-	      			var latitude = document.getElementById("id_latitude");
-	      			// $(latitude).text(location[1])
-	      			return;
-            		// var container = document.getElementById("particles-js");
-              //       container.innerHTML = '<span style="color:red;">' + results[0].geometry.location + '</span>';
+	      			var location = results[0].geometry.location; //hold the lat & long of user address
+	      			location = location.toString();
+	      			location = location.replace(/[() ]/g,'');
+					location = location.split(',');
+					document.getElementById("id_latitude").value = location[0];
+	      			document.getElementById("id_longitude").value = location[1];
           		} else {
             		alert('Geocode was not successful for the following reason: ' + status);
           		}
-          		break;
           	});
-          	break;
 	      }
 
 	       function geolocate() {

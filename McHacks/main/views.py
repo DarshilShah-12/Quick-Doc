@@ -27,6 +27,8 @@ class mainView(TemplateView):
     		search = Search()
     		search.userAddress = form.cleaned_data['userAddress']
     		search.userConcern = form.cleaned_data['userConcern']
+    		search.longitude = form.cleaned_data['longitude']
+    		search.latitude = form.cleaned_data['latitude']
     		args = {'form': form, 'search':search, 'userAddress':search.userAddress, 'userConcern':search.userConcern}
     		return render(request, 'main/dashboard.html', args)
     	print("form not valid :(")
