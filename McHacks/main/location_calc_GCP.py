@@ -1,40 +1,32 @@
-# # import requests
-# from django.db import models
-# API_KEY = "AIzaSyCauISu_jwPz5y4UwoVF7PcpYjuRvdCAFc"
+import requests
+import googlemaps
 
-# """ Calculate the closest healthcare locations depending on the need specified in the user form"""
-# class HealthCareLocations():
-#     def __init__(self, locationCoords):
-#         # self.userAddress = userAddress
-#         # self.userConcern = userConcern
-#         self.locationCoords = locationCoords
-#         self.apiKey = API_KEY
+API_KEY = "AIzaSyCauISu_jwPz5y4UwoVF7PcpYjuRvdCAFc"
 
 class HealthCareLocations():
 
-    def __init__(self, userAddress, userConcern):
+    def __init__(self, userAddress, userConcern, latitude, longitude):
         self.userAddress = userAddress
         self.userConcern = userConcern
+        self.latitude    = latitude
+        self.longitude   = longitude
         self.apiKey = API_KEY
 
-    def getRequest(self, url, headers):
-        return requests.request("GET", url, data=payload, headers=headers)
 
-    # def emergencyPlaceSearch(self):
+    def emergencyPlaceSearch(self):
 
+        gmaps = googlemaps.Client(key=self.apiKey)
+        location = [self.latitude, self.longitude]
+        radius = 20000
+        placesResult = gmaps.places(query="hospitals", location=location, radius=radius)['results']
+        return placesResult
 
-    #     coords = self.locationCoords.replace("(", "")
-    #     coords = coords.replace(")", "")
+if __name__ == '__main__':
 
-    #     parDic = {"base_https": "https://maps.googleapis.com/maps/api/place/findplacefromtext/json", 
-    #                         "point": coords, "radius": "2000", "input" = "hospitals", "fields" = 
-    #                         ["formatted_address,name,opening_hours,rating"]}
+    search = HealthCareLocations("", "", 43.4643, -80.5204)
+    place = search.emergencyPlaceSearch()
+    print("place: ", place)
 
-    #     # format the url 
-    #     url = "{0}?input={1}&inputtype=textquery&fields={2}&locationbias=circle:{3}@{4}&key={5}".format(
-    #     parDic["base_https"],parDic["input"], parDic["fields"],parDic["radius"], parDic["point"], API_KEY)
-
-    #     jsonOutput = getRequest(url)
 
 
 
