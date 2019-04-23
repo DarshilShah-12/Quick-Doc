@@ -1,4 +1,3 @@
-import requests
 import googlemaps
 
 API_KEY = "AIzaSyCauISu_jwPz5y4UwoVF7PcpYjuRvdCAFc"

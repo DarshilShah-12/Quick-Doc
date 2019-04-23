@@ -110,7 +110,7 @@
 			});
 		</script>
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 		<script>
 
@@ -159,30 +159,15 @@
 	      		if (status === 'OK') {
 	      			var location = results[0].geometry.location; //hold the lat & long of user address
 	      			location = location.toString();
-<<<<<<< HEAD
-					location = location.replace(/[() ]/g, '')
-					var coords = location.split(',');
-	      			document.getElementById("id_longitude").value = coords[0];
-	      			document.getElementById("id_latitude").value = coords[1];
-	      			return;
-            		// var container = document.getElementById("particles-js");
-              //       container.innerHTML = '<span style="color:red;">' + results[0].geometry.location + '</span>';
-          		} else {
-            		alert('Geocode was not successful for the following reason: ' + status);
-          		}
-          		
-          	});
-          	
-=======
 	      			location = location.replace(/[() ]/g,'');
 					location = location.split(',');
 					document.getElementById("id_latitude").value = location[0];
 	      			document.getElementById("id_longitude").value = location[1];
+	      			return;
           		} else {
             		alert('Geocode was not successful for the following reason: ' + status);
           		}
           	});
->>>>>>> 75e97bc04b8570838a553264be56e9ca972974cd
 	      }
 
 	       function geolocate() {
